@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>城市阿瑪菲-花蓮火車站前民宿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="城市阿瑪菲是花蓮火車站前站的優質住宿，前站出口步行10分鐘即可抵達，提供精緻套房以及交誼廳給您使用。立即線上訂房，享受悠閒假期。">
+  <meta name="keywords" content="城市阿瑪菲,城市,花蓮火車站,民宿,花蓮,訂房">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      background-color: rgba(255, 245, 230, 0.95);
+	  background-image: url('images/knitted-sweater.png');
+      background-repeat: repeat;
+      background-size: auto;
+	  font-family: "cactus classical serif", cursive;
+    }
+	
+	.cactus-classical-serif-regular {
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 25px;
+      background-color: rgba(255, 226, 185, 0.9);
+      color: #333;
+      font-size: 13px;
+      font-weight: normal;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    header h1 a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      background-color: transparent;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background-image: url('images/03.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      margin-top: 10px;
+    }
+
+    .room-preview-section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .room {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      padding: 20px;
+      border-radius: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .room:hover {
+      background-color: #642100;
+    }
+
+    .room-description {
+      flex: 1;
+      font-size: 1.8rem;
+      color: #4D0000;
+      line-height: 1.6;
+      transition: color 0.3s ease;
+    }
+
+    .room:hover .room-description {
+      color: #fff;
+    }
+
+    .room img {
+      width: 50%;
+      height: auto;
+      object-fit: cover;
+      margin-right: 20px;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+    }
+
+    .booking-button {
+      display: block;
+      width: 220px;
+      background-color: #642100;
+      color: #FFFFFF;
+      padding: 15px 20px;
+      text-decoration: none;
+      text-align: center;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      margin: 40px auto;
+      border: 1px solid #aaa;
+    }
+
+    .booking-button:hover {
+      background-color: rgba(255, 213, 160, 1);
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 226, 185, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .top-half {
+        height: 300px;
+      }
+
+      .room {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .room img {
+        width: 90%;
+        margin-bottom: 10px;
+      }
+
+      .room-description {
+        text-align: left;
+      }
+
+      .booking-button {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+	.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('show');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 只執行一次
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+  });
+</script>
+
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><a href="https://cityamalfi.github.io/">城市阿瑪菲</a></h1>
+	 <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+    <nav id="main-nav">
+      <a href="about.html" >關於我們</a>
+      <a href="rooms.html" >房型介紹</a>
+      <a href="booking-info.html" >訂房須知</a>
+      <a href="location.html" >位置資訊</a>
+      <a href="https://booking.owlting.com/amalfi?lang=zh_TW" target="blink">線上訂房</a>
+    </nav>
+  </header>
+
+  <!-- Hero 單張圖覆蓋暗色並置中文字 -->
+  <section class="hero fade-in">
+    <div class="hero-text">
+      <h1 style="font-size: 2em;">房型介紹</h1>
+      <p>享受自然與慢活的理想假期</p>
+    </div>
+  </section>
+
+  <!-- 房型預覽 -->
+  <section class="room-preview-section">
+    <section class="fade-in">
+	<a href="double-room.html#room" class="room-link">
+    <div class="room">
+      <img src="images/溫暖雙人房.jpeg" width="1500" height="844" alt="房型4">
+      <div class="room-description">
+        <h3>溫馨雙人房</h3>
+        房間內有一張標準雙人床、液晶電視及小冰箱，專屬衛浴淋浴間，分離式冷氣。房間空間約5坪採光通風良好，各樓層有陽台可使用。
+      </div>
+    </div>
+	</a>
+	</a>
+  </section>
+    <section class="fade-in">
+    <a href="premium-triple-room.html#room" class="room-link">
+    <div class="room">
+      <img src="images/尊貴三人房.jpeg" width="1500" height="844" alt="房型2">
+      <div class="room-description">
+        <h3>尊貴三人房</h3>
+        房間內有一張加大雙人床及一張小型單人床、液晶電視及小冰箱，專屬衛浴淋浴間，分離式冷氣。房間空間約7坪採光通風良好，各樓層有陽台可使用。
+      </div>
+    </div>
+	</a>
+	</section>
+    <section class="fade-in">
+	<a href="triple-room.html#room" class="room-link">
+    <div class="room">
+      <img src="images/甜蜜三人房.jpeg" width="1500" height="844" alt="房型2">
+      <div class="room-description">
+        <h3>甜蜜三人房</h3>
+        房間內有一張標準雙人床及一張單人床、液晶電視及小冰箱，專屬衛浴淋浴間，分離式冷氣。房間空間約7坪採光通風良好，各樓層有陽台可使用。
+      </div>
+    </div>
+	</a>
+	</section>
+    <section class="fade-in">
+	<a href="family-room.html#room" class="room-link">
+    <div class="room">
+      <img src="images/家庭四人房.jpeg" width="1500" height="844" alt="房型3">
+      <div class="room-description">
+        <h3>家庭四人房</h3>
+        房間內有二張標準雙人床、液晶電視及小冰箱，專屬衛浴淋浴間，分離式冷氣。房間空間約11坪包含有專屬陽台採光通風良好。
+      </div>
+    </div>
+	</a>
+	</section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    地址：970台灣花蓮縣花蓮市國興五街132-16號｜電話：0920099077｜LINE：@0920099077｜統一編號:34858208
+  </footer>
+
+</body>
+</html>

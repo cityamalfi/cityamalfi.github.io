@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>城市阿瑪菲-位置資訊</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      background-color: rgba(255, 245, 230, 0.95);
+	  background-image: url('images/knitted-sweater.png');
+      background-repeat: repeat;
+      background-size: auto;
+	  font-family: "cactus classical serif", cursive;
+    }
+	
+	.cactus-classical-serif-regular {
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 25px;
+      background-color: rgba(255, 226, 185, 0.9);
+      color: #333;
+      font-size: 13px;
+      font-weight: normal;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    header h1 a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      background-color: transparent;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background-image: url('images/05.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 226, 185, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .top-half {
+        height: 300px;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+	.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('show');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 只執行一次
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+  });
+</script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><a href="https://cityamalfi.github.io/">城市阿瑪菲</a></h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>	
+    <nav id="main-nav">
+      <a href="about.html" >關於我們</a>
+      <a href="rooms.html" >房型介紹</a>
+      <a href="booking-info.html" >訂房須知</a>
+      <a href="location.html" >位置資訊</a>
+      <a href="https://booking.owlting.com/amalfi?lang=zh_TW" target="blink">線上訂房</a>
+    </nav>
+  </header>
+
+  <!-- Hero 單張圖覆蓋暗色並置中文字 -->
+  </section>
+  <section class="fade-in">
+  <section class="hero">
+    <div class="hero-text">
+      <h1 style="font-size: 2em;">位置資訊</h1>
+      <p>享受自然與慢活的理想假期</p>
+    </div>
+  </section>
+  <section id="about-us" style="max-width: 900px; margin: 60px auto; padding: 0 20px; font-family: '微軟正黑體', sans-serif; color: #4D2100;">
+ <section class="fade-in cactus-classical-serif-regular">
+<h2 style="font-size: 30px; margin: 15px 0; border-top: 2px solid #d8a45f; border-bottom: 2px solid #d8a45f; padding: 10px 0; color: #642100;">
+── 開車族 ──</h2>
+</section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ．台北開車到花蓮：
+  </p>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+    台九線南下→經過北埔村的家樂福→右轉中央路→左轉中山路→鐵路地下道→左轉國聯二路→看到全聯福利中心右轉國民二街→左轉國興五街→132-16號→左邉社區白色建築物左側第二棟→城市阿瑪菲
+  </p>
+  </section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ．台東台九線北上：
+  </p>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+    台東→東華大學→木瓜溪橋→左轉福昌路→右轉中央路→右轉中山路→鐵路地下道→左轉國聯二路→看到全聯福利中心右轉國民二街→左轉國興五街→132-16號→左邉社區白色建築物左側第二棟→城市阿瑪菲  </p>
+  </section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ．台東台11線北上：
+  </p>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 50px;">
+    台東→海洋公園→花蓮大橋→右轉南濱路→經過南濱公園直行→左轉中山路→進入花蓮市區直行→右轉國聯二路→看到全聯福利中心右轉國民二街→左轉國興五街→132-16號→左邉社區白色建築物左側第二棟→城市阿瑪菲  </p>
+  </section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+<h2 style="font-size: 30px; margin: 15px 0; border-top: 2px solid #d8a45f; border-bottom: 2px solid #d8a45f; padding: 10px 0; color: #642100;">
+── 非開車族 ──</h2>
+</section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ．台鐵停靠站：花蓮車站，到站
+  </p>
+ 
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+   ．搭乘計程車，車程時間約2分鐘
+   </section>
+  
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ．步行前往約8分鐘，路線：
+  </p>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+    花蓮火車站前站→直行國聯三路→右轉國聯二路→看到全聯福利中心左轉國民二街→左轉國興五街→132-16號→左邉社區白色建築物左側第二棟→城市阿瑪菲  </section>
+</section> 
+ 
+  <!-- Google 地圖區塊 -->
+<section id="map-section" style="padding: 40px 0; text-align: center; border-radius: 10px;">
+  <div style="display: flex; justify-content: center;">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3645.2114189477243!2d121.60128511092223!3d23.988310278419178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x34689fb794724575%3A0xe5bb3773333f2a17!2z5Z-O5biC6Zi_55Gq6I-y5rCR5a6_!5e0!3m2!1szh-TW!2stw!4v1751885006316!5m2!1szh-TW!2stw"
+	width="90%" height="800px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</section>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    地址：970台灣花蓮縣花蓮市國興五街132-16號｜電話：0920099077｜LINE：@0920099077｜統一編號:34858208
+  </footer>
+
+</body>
+</html>

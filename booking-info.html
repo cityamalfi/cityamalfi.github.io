@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>城市阿瑪菲-訂房須知</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      background-color: rgba(255, 245, 230, 0.95);
+	  background-image: url('images/knitted-sweater.png');
+      background-repeat: repeat;
+      background-size: auto;
+	  font-family: "cactus classical serif", cursive;
+    }
+	
+	.cactus-classical-serif-regular {
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 25px;
+      background-color: rgba(255, 226, 185, 0.9);
+      color: #333;
+      font-size: 20px;
+      font-weight: normal;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    header h1 a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      background-color: transparent;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background-image: url('images/04.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 226, 185, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .top-half {
+        height: 300px;
+      }
+
+      .room {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .room img {
+        width: 90%;
+        margin-bottom: 10px;
+      }
+
+      .room-description {
+        text-align: center;
+      }
+
+      .booking-button {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+	.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+</style>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('show');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 只執行一次
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+  });
+</script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><a href="https://cityamalfi.github.io/">城市阿瑪菲</a></h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>	
+    <nav id="main-nav">
+      <a href="about.html" >關於我們</a>
+      <a href="rooms.html" >房型介紹</a>
+      <a href="booking-info.html" >訂房須知</a>
+      <a href="location.html" >位置資訊</a>
+      <a href="https://booking.owlting.com/amalfi?lang=zh_TW" target="blink">線上訂房</a>
+    </nav>
+  </header>
+
+  <!-- Hero 單張圖覆蓋暗色並置中文字 -->
+   <section class="fade-in">
+  <section class="hero">
+    <div class="hero-text">
+      <h1 style="font-size: 2em;">訂房須知</h1>
+	  <p>享受自然與慢活的理想假期</p>
+    </div>
+  </section>
+  </section>
+  
+  <section id="about-us" style="max-width: 900px; margin: 60px auto; padding: 0 20px; font-family: '微軟正黑體', sans-serif; color: #4D2100;">
+  <section class="fade-in cactus-classical-serif-regular">
+  <h2 style="font-size: 2rem; margin-bottom: 20px; border-bottom: 3px solid #642100; padding-bottom: 8px;">訂房須知</h2>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+    ※城市阿瑪菲，我們在花蓮前站花蓮市國興五街132-16號，雖然位於前站精華區，但是鬧中取靜沒有車輛吵雜聲，誠摯歡迎喜歡方便又安靜的您。
+	</p>
+	<p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+    民宿室內空間全面禁煙，每個樓層都有陽台開放空間可使用，一樓有公共空間可供交誼使用，且提供入住前或退房後寄放行李使用。公共空間及客房都有提供免費WIFI及MOD可使用。
+  </p>
+  </section>
+   <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+  ※每日屋主接待時間為上午9:00~下午17:00，若於接待時間外抵達，可先聯絡匯款後提供密碼盒取用房卡入住，手機號碼及LINE ID為0920099077，退房時間為翌日上午11:00前，延後退房每小時收費100元。
+	</p>
+	<p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+	民宿一樓有免費車位，其餘約免費停車位位於花蓮車站附近（距離民宿約600公尺），若需停車請提前向民宿預約以利安排車位
+  </p>
+  </section>
+   <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8;">
+  ※本館無提供早餐及續住打掃服務，一樓備有交誼廳提供全自動現磨咖啡機及茶水吧台，簡易廚房可供使用，請共同維護環境整潔！
+  </p>
+	<p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px;">
+    入住時間：當日15:00以後 退房時間：翌日11:00以前。
+  </p>
+  </section>
+  <section class="fade-in cactus-classical-serif-regular">
+  <p style="font-size: 1.8rem; line-height: 1.8; margin-bottom: 20px; color: red;">
+    取消政策：免費取消期限為截至入住日前7天。截至入住日前7天後若顧客取消訂房，顧客需支付預訂總金額的50%。如顧客未如期入住，將收取預訂總金額全額。
+  </p>
+  </section>
+</section>
+
+
+  <!-- Footer -->
+  <footer>
+    地址：970台灣花蓮縣花蓮市國興五街132-16號｜電話：0920099077｜LINE：@0920099077｜統一編號:34858208
+  </footer>
+
+
+</body>
+</html>

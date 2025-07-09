@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>城市阿瑪菲-尊貴三人房</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Microsoft JhengHei', sans-serif;
+      background-color: rgba(255, 245, 230, 0.95);
+	  background-image: url('images/knitted-sweater.png');
+      background-repeat: repeat;
+      background-size: auto;
+	  font-family: "cactus classical serif", cursive;
+    }
+	
+	.cactus-classical-serif-regular {
+  font-family: "Cactus Classical Serif", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 13px 25px;
+      background-color: rgba(255, 226, 185, 0.9);
+      color: #333;
+      font-size: 13px;
+      font-weight: normal;
+      z-index: 1000;
+      box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      color: #333;
+      font-weight: bold;
+      font-size: 30px;
+    }
+
+    header h1 a {
+      color: #333;
+      text-decoration: none;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      font-size: 24px;
+      border: none;
+      cursor: pointer;
+    }
+
+    nav {
+      display: flex;
+      gap: 10px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      background-color: transparent;
+      padding: 6px 10px;
+      border-radius: 5px;
+      font-size: 20px;
+      transition: transform 0.2s;
+    }
+
+    nav a:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background-image: url('images/尊貴三人房.jpeg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.55);
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .hero-text p {
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: row;
+        align-items: center;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background-color: rgba(255, 226, 185, 0.95);
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 150px;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .top-half {
+        height: 300px;
+      }
+
+      .room {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .room img {
+        width: 90%;
+        margin-bottom: 10px;
+      }
+
+      .room-description {
+        text-align: center;
+      }
+
+      .booking-button {
+        width: 80%;
+        font-size: 1rem;
+      }
+
+      footer {
+        font-size: 12px;
+      }
+    }
+	.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.gallery-container {
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+/* ====== 圖文左圖右文區塊 ====== */
+.carousel-and-text {
+  display: flex;
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap; /* 手機時可自動換行 */
+}
+/* 主圖片與縮圖區塊：左右排版 */
+.carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 60px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+/* 主圖片 */
+.main-image {
+  width: 800px;
+  height: 450px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
+}
+
+.main-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: relative
+  top: 0;
+  left: 0;
+  aspect-ratio: 16 / 9; 
+  overflow: hidden;
+}
+
+.main-image img.active {
+  opacity: 1;
+}
+
+/* 縮圖垂直排列 */
+.thumbnail-column {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.thumbnail-column .thumbnail {
+  width: 100px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.thumbnail-column .thumbnail.active,
+.thumbnail-column .thumbnail:hover {
+  opacity: 1;
+  border-color: #642100;
+  transform: scale(1.05);
+}
+
+/* 文字區塊 */
+.text-box,
+.carousel-text {
+  flex: 1 1 100%;
+  font-family: 'Microsoft JhengHei', sans-serif;
+  color: #4D2100;
+  margin-top: 30px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
+}
+
+.room-title,
+.text-box h2.room-title {
+  font-size: 30px;
+  margin: 15px 0;
+  border-top: 2px solid #d8a45f;
+  border-bottom: 2px solid #d8a45f;
+  padding: 10px 0;
+  color: #642100;
+}
+
+.price-highlight {
+  font-size: 1.8rem;
+  color: #D2691E;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.price-highlight span {
+  color: #d85c00;
+  font-weight: bold;
+}
+
+.warning-text {
+  color: red;
+  font-size: 1.8rem;
+  margin: 10px 0;
+}
+
+.facility-list {
+  list-style: none;
+  padding: 0 0 0 px;
+  margin: 0;
+  line-height: 1.8;
+  font-size: 1.8rem;
+}
+
+.facility-list li::before {
+  content: "\2022  ";
+  color: #D2691E;
+}
+
+.other-rooms-list {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.other-rooms-list img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.other-rooms-list img:hover {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .carousel-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .main-image {
+    width: 90%;
+    height: auto;
+  }
+
+  .thumbnail-column {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .thumbnail-column .thumbnail {
+    width: 80px;
+    height: 60px;
+  }
+
+  .text-box,
+  .carousel-text {
+    padding: 0 10px;
+  }
+}
+
+</style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1><a href="https://cityamalfi.github.io/">城市阿瑪菲</a></h1>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>	
+    <nav id="main-nav">
+      <a href="about.html" >關於我們</a>
+      <a href="rooms.html" >房型介紹</a>
+      <a href="booking-info.html" >訂房須知</a>
+      <a href="location.html" >位置資訊</a>
+      <a href="https://booking.owlting.com/amalfi?lang=zh_TW" target="blink">線上訂房</a>
+    </nav>
+  </header>
+
+  <!-- Hero 單張圖覆蓋暗色並置中文字 -->
+   <section class="fade-in">
+  <section class="hero">
+    <div class="hero-text">
+      <h1 style="font-size: 2em;">房型介紹</h1>
+	  <p>享受自然與慢活的理想假期</p>
+    </div>
+  </section>
+  </section>
+
+<!-- 圖文區塊 -->
+<section id="room">
+<div class="carousel-and-text">
+<div class="text-box">
+
+<section class="fade-in">
+    <h2 class="room-title">── 尊貴三人房 ──</h2>
+	</section>
+	<section class="fade-in">
+	<p class="price-highlight">客房規格：<span>人數 × 3人，加大雙人床 × 1，單人床 × 1</span></p>
+	</section>
+	<section class="fade-in">
+	<p class="price-highlight">客房坪數：<span>約7坪，樓層觀景台</span></p>
+	</section>
+	<section class="fade-in">
+    <p class="warning-text">※請攜帶「身份證」入住唷！</p>
+	</section>
+	<section class="fade-in">
+    <ul class="facility-list">
+      <li>客房設備：液晶電視、台灣大寬頻MOD、Wi-Fi、冷氣、冰箱、吹風機、礦泉水、茶包、觀景窗</li>
+    </ul>
+	</section>
+  </div>
+</div>
+</section>
+
+  <!-- 主圖片 -->
+	<section class="fade-in">
+  <div class="carousel-container">
+  <div class="main-image">
+    <img id="mainCarousel" src="images/尊貴三人房.jpeg" alt="主圖片">
+  </div>
+  <div class="thumbnail-column">
+    <img src="images/尊貴三人房.jpeg" class="thumbnail active" onclick="selectImage(0)">
+    <img src="images/尊貴三人房2.jpg" class="thumbnail" onclick="selectImage(1)">
+    <img src="images/尊貴三人房3.jpg" class="thumbnail" onclick="selectImage(2)">
+    <img src="images/尊貴三人房4.jpg" class="thumbnail" onclick="selectImage(3)">
+  </div>
+</div>
+</section>
+<section class="fade-in">
+<div class="carousel-and-text">
+<div class="text-box">
+<h3>查看其他房型</h3>
+    <div class="other-rooms-list">
+      <a href="triple-room.html#room"><img src="images/甜蜜三人房.jpeg" alt="甜蜜三人房"></a>
+      <a href="family-room.html#room"><img src="images/家庭四人房.jpeg" alt="家庭四人房"></a>
+	  <a href="double-room.html#room"><img src="images/溫暖雙人房.jpeg" alt="溫馨雙人房"></a>
+    </div>
+	</div>
+	</div>
+	</section>
+
+  <!-- Footer -->
+  <footer>
+    地址：970台灣花蓮縣花蓮市國興五街132-16號｜電話：0920099077｜LINE：@0920099077｜統一編號:34858208
+  </footer>
+  
+<script>
+  const images = [
+    "images/尊貴三人房.jpeg",
+    "images/尊貴三人房2.jpg",
+    "images/尊貴三人房3.jpg",
+    "images/尊貴三人房4.jpg"
+  ];
+
+  let currentIndex = 0;
+  const carousel = document.getElementById("mainCarousel");
+  const thumbnails = document.querySelectorAll(".thumbnail");
+
+  function updateImage(index) {
+    carousel.classList.remove("active"); // 淡出
+    setTimeout(() => {
+      carousel.src = images[index];
+      carousel.classList.add("active"); // 淡入
+    }, 100); // 與 transition 配合延遲
+
+    thumbnails.forEach((thumb, i) => {
+      thumb.classList.toggle("active", i === index);
+    });
+  }
+
+  function selectImage(index) {
+    currentIndex = index;
+    updateImage(currentIndex);
+  }
+
+  // 初始化第一張圖片淡入
+  window.addEventListener("load", () => {
+    carousel.classList.add("active");
+  });
+
+  // 自動輪播
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % images.length;
+    updateImage(currentIndex);
+  }, 4000); // 每 4 秒換一張
+
+  function toggleMenu() {
+    const nav = document.getElementById('main-nav');
+    nav.classList.toggle('show');
+  }
+  document.addEventListener('DOMContentLoaded', function () {
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target); // 只執行一次
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+  });
+  
+</script>
+
+
+</body>
+</html>
