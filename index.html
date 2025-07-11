@@ -243,6 +243,13 @@
         font-size: 12px;
       }
     }
+
+@media (hover: none) and (pointer: coarse) {
+  .link-card:active {
+    background-color: #844200;
+  }
+}
+	
 	.fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -309,7 +316,7 @@ a {
   <!-- 房型預覽 -->
   <section class="room-preview-section">
   <section class="fade-in">
-	<a href="double-room.html#room" class="room-link">
+	<a href="double-room.html#room" class="room-link link-card">
     <div class="room">
       <img src="images/溫暖雙人房.jpeg" width="1500" height="844" alt="房型4">
       <div class="room-description">
@@ -321,7 +328,7 @@ a {
 	</a>
   </section>
     <section class="fade-in">
-    <a href="premium-triple-room.html#room" class="room-link">
+    <a href="premium-triple-room.html#room" class="room-link link-card">
     <div class="room">
       <img src="images/尊貴三人房.jpeg" width="1500" height="844" alt="房型2">
       <div class="room-description">
@@ -332,7 +339,7 @@ a {
 	</a>
 	</section>
     <section class="fade-in">
-	<a href="triple-room.html#room" class="room-link">
+	<a href="triple-room.html#room" class="room-link link-card">
     <div class="room">
       <img src="images/甜蜜三人房.jpeg" width="1500" height="844" alt="房型2">
       <div class="room-description">
@@ -343,7 +350,7 @@ a {
 	</a>
 	</section>
     <section class="fade-in">
-	<a href="family-room.html#room" class="room-link">
+	<a href="family-room.html#room" class="room-link link-card">
     <div class="room">
       <img src="images/家庭四人房.jpeg" width="1500" height="844" alt="房型3">
       <div class="room-description">
